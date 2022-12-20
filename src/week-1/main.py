@@ -4,7 +4,7 @@ def get_lines(filename: str) -> list:
     lines = input_file.readlines()
     return [line.strip() for line in lines]
 
-def calculate_max_calories(lines: list) -> int:
+def calculate_max_calories(lines: list) -> list:
     elfs_calories = 0
     elf_calorie_list = []
 
@@ -14,8 +14,9 @@ def calculate_max_calories(lines: list) -> int:
         else:
             elf_calorie_list.append(elfs_calories)
             elfs_calories = 0
-    return max(elf_calorie_list)
+    return elf_calorie_list
 
 if __name__ == "__main__":
     lines = get_lines("input.txt")
-    print(calculate_max_calories(lines))
+    print(max(calculate_max_calories(lines)))
+    print(sum(sorted(calculate_max_calories(lines))[-3:]))
